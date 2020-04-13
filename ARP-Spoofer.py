@@ -1,4 +1,7 @@
-#echo 1 > /proc/sys/net/ipv4/ip_forward
+# An ARP Spoofer Script powered by Python 3.
+# Author: Gobinathan l
+# echo 1 > /proc/sys/net/ipv4/ip_forward
+# You don't need to run the Script again against the gateway to spoof as Target. The Script does that automatically.
 
 import scapy.all as scapy
 import time
