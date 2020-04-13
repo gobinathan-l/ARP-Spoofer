@@ -4,6 +4,7 @@ import scapy.all as scapy
 import time
 import argparse
 import sys
+from termcolor import colored
 
 def get_arguements():
     parser = argparse.ArgumentParser()
@@ -20,7 +21,7 @@ def get_mac(ip):
         answered_list = scapy.srp(arp_request_broadcast, timeout=1, verbose=False)[0] # To get only the answered machines list.
         return answered_list[0][1].hwsrc
     except IndexError:
-        print("[-] No Arguements Specified. Press -h for help.")
+        print(colored("[-] No Arguements Specified. Press -h for help.", "yellow"))
         sys.exit()
 
 def spoof(target_ip, spoof_ip):
@@ -45,11 +46,11 @@ def launch_attack(target_ip, spoof_ip):
             counter += 2
             time.sleep(2)
     except KeyboardInterrupt:
-        print("\n[-] Ctrl+C detected, Quitting..")
+        print(colored("\n[-] Ctrl+C detected, Quitting..", "yellow"))
         restore(target_ip, spoof_ip)
         restore(spoof_ip, target_ip)
-        print("[+] Restored the ARP tables of Target and Host.")
-        print("[*] Hope you Sniffed em all.")
+        print(colored("[+] Restored the ARP tables of Target and Host.", "green"))
+        print(colored("[*] Hope you Sniffed em all.", "green"))
 
 options = get_arguements()
 target_ip = options.target_ip
