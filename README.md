@@ -28,9 +28,7 @@ To Execute the Script..
 
 ### About Author
 I am Gobinathan, a CyberSecurity Enthusiast. To reach out to me..<br>
-[~] [Github](https://github.com/gobinathan-l/) <br>
-[~] [Linkedin](https://in.linkedin.com/in/gobinathan-l) <br>
-[~] [Twitter](https://twitter.com/gobinathan_l)
+[GitHub](https://github.com/gobinathan-l/), [Linkedin](https://in.linkedin.com/in/gobinathan-l), [Twitter](https://twitter.com/gobinathan_l)
 
 
 ***Suggestions on Improvements and New Features are Welcome.***
