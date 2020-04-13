@@ -1,4 +1,6 @@
- <h1 align="center" class="code-line" data-line-start=0 data-line-end=1><a id="The_ARPy_0"></a>The ARPy.</h1>
+<p align="center">
+<b>The ARPy</b>
+</p>
 <p class="has-line-data" data-line-start="1" data-line-end="2">The ARPy is an ARP Spoofer powered by python 3.</p>
 <ul>
 <li class="has-line-data" data-line-start="3" data-line-end="4">Spoofs the Target and Gateway Mac Address to facilitate Man in the Middle Attacks.</li>
