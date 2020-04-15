@@ -11,18 +11,18 @@ from termcolor import colored
 import os
 
 def enable_ipforward(ip_forward):
-    if ip_forward == "True":
+    if ip_forward == "true":
         os.system("echo 1 > /proc/sys/net/ipv4/ip_forward")
         print(colored("\r[+] IP Forwarding is Enabled. Remember to Sniff Everything on your current Interface :)", "green"))
-    elif ip_forward == "False":
+    elif ip_forward == "false":
         print(colored("[-] IP Forwarding is not Enabled. The Target will have no Internet Connection.", "yellow"))
         os.system("echo 0 > /proc/sys/net/ipv4/ip_forward")
 
 def get_arguements():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t","--target", dest="target_ip", help="Press -h to display Help.")
-    parser.add_argument("-g","--gateway", dest="spoof_ip", help="Press -h to display Help.")
-    parser.add_argument("-f","--forward", dest="ip_forward", help="Press -h to display Help")
+    parser.add_argument("-t","--target", dest="target_ip", help="IP Address of Target Computer.")
+    parser.add_argument("-g","--gateway", dest="spoof_ip", help="IP Address of Gateway.")
+    parser.add_argument("-f","--forward", dest="ip_forward", help="To disable The IP Forward Security Feature in Linux Machines.")
     options = parser.parse_args()
     return options
 
