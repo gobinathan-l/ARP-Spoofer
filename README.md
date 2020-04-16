@@ -23,7 +23,7 @@ To install Dependencies..
 To Execute the Script..
 ```sh
 # python3 ARPy.py -h
-# python3 ARPy.py --target 192.168.1.102 --gateway 191.168.1.1 --forward true
+# python3 ARPy.py -t 192.168.1.101 -g 192.168.1.1 -f true
 ```
 
 ### About Author
