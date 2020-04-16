@@ -37,7 +37,7 @@ def get_mac(ip):
         answered_list = scapy.srp(arp_request_broadcast, timeout=1, verbose=False)[0] # To get only the answered machines list.
         return answered_list[0][1].hwsrc
     except IndexError:
-        print(colored("[-] No Arguements Specified. Press -h for help.", "yellow"))
+        print(colored("[-] Error. Press -h for help.", "yellow"))
         sys.exit()
 
 def spoof(target_ip, spoof_ip):
