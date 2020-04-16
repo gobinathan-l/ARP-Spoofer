@@ -10,7 +10,7 @@ The ARPy is an ARP Spoofing Script powered by python 3.
 To Clone the ARPy Repository..
 
 ```sh
-# git clone https://github.com/gobinathan-l/ARP-Spoofer.git
+# git clone https://github.com/gobinathan-l/ARPy.git
 # cd ARP-Spoofer
 ```
 
@@ -23,7 +23,7 @@ To install Dependencies..
 To Execute the Script..
 ```sh
 # python3 ARPy.py -h
-# python3 ARPy.py --target 192.168.1.102 --gateway 191.168.1.1 --forward True
+# python3 ARPy.py --target 192.168.1.102 --gateway 191.168.1.1 --forward true
 ```
 
 ### About Author
