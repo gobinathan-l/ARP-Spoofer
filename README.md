@@ -11,7 +11,7 @@ To Clone the ARPy Repository..
 
 ```sh
 # git clone https://github.com/gobinathan-l/ARPy.git
-# cd ARP-Spoofer
+# cd ARPy
 ```
 
 To install Dependencies..
